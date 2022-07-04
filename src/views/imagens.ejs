@@ -1,0 +1,48 @@
+<%- include("includes/head") %>
+  <%- include("includes/nav") %>
+
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-2"></div>
+        <div class="col-5">
+
+          <h1 class="text-center my-3">Imagens</h1>
+          <p class="text-center lead">Crie ou edite sua imagem abaixo:</p>
+
+          <%- include("includes/messages") %>
+            <% if(imagens._id) {%>
+              <form action="/imagens/edit/<%=imagens._id %>?_csrf=<%=csrfToken %> " method="post"
+                enctype="multipart/form-data">
+                <img style="height: 200px" src="<%=imagens.imagem %>" class="rounded mx-auto d-block mb-4" alt="...">
+                <% }else{ %>
+                  <form action="/imagens/register?_csrf=<%=csrfToken %> " method="post" enctype="multipart/form-data">
+                    <% } %>
+
+                      <input type="hidden" name="_csrf" value=<%=csrfToken %>>
+
+
+                      <div class="input-group mb-3">
+                        <label class="input-group-text">Upload</label>
+                        <input type="file" class="form-control" name="imagem">
+                      </div>
+
+                      <div class="mb-3">
+                        <label>Titulo:</label>
+                        <input value="<%=imagens.titulo %>" type="text" class="form-control" name="titulo">
+                      </div>
+                      <div class="mb-3">
+                        <label>Descrição:</label>
+                        <textarea class="form-control" name="descricao" rows="3"><%=imagens.descricao %></textarea>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Salvar</button>
+                  </form>
+
+
+        </div>
+        <div class="col-2"></div>
+      </div>
+    </div>
+
+
+    <%- include("includes/footer") %>

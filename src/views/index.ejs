@@ -1,0 +1,49 @@
+<%- include("includes/head") %>
+  <%- include("includes/nav") %>
+
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-2"></div>
+        <div class="col-8">
+
+          <h1 class="text-center my-3">Photos Gallery</h1>
+          <% if(imagens.length> 0) {%>
+            <p class="text-center lead">Veja suas imagens abaixo:</p>
+            <% }else{ %>
+              <p class="text-center lead">Faça upload para acessar suas imagens</p>
+              <% } %>
+                <%- include("includes/messages") %>
+
+                  <div class="reponsive-table ">
+                    <table class="table align-middle">
+                      <% imagens.forEach( imagem=> {%>
+                        <tr>
+                          <td>
+                            <img style="height: 100px" src="<%=imagem.imagem %>" class="rounded mx-auto d-block">
+                          </td>
+                          <td>
+                            <%= imagem.titulo %>
+                          </td>
+                          <td>
+                            <%= imagem.descricao %>
+                          </td>
+                          <td>
+                            <a class="text-decoration-none" href="/imagens/index/<%=imagem._id %> ">Editar</a>
+                          </td>
+                          <td>
+                            <a class="text-danger text-decoration-none"
+                              href="/imagens/delete/<%=imagem._id %> ">Delete</a>
+                          </td>
+                        </tr>
+                        <% }); %>
+                    </table>
+                  </div>
+
+        </div>
+        <div class="col-2"></div>
+      </div>
+    </div>
+
+
+    <%- include("includes/footer") %>

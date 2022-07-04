@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Home</a>
+    <div>
+
+      <ul class="navbar-nav ml-auto">
+        <% if(!user) {%>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/cadastro">Cadastre-se</a>
+          </li>
+          <% }else{ %>
+            <li class="nav-item">
+              <a class="nav-link" href="/login/logout">Logout</a>
+            </li>
+            <% } %>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/imagens">Upload</a>
+              </li>
+      </ul>
+    </div>
+</nav>
